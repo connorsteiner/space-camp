@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Space Camp - Home</title>
+        <link rel="stylesheet" href="stylesheets/bootstrap-5.2.2-dist/css/bootstrap.css">
+        <link rel="stylesheet" href="stylesheets/styles.css">
+        <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    </head>
+    <body>
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="left-side">
+                    <div class="nav-link-wrapper active-nav-link">
+                        <a href="index.html">Home</a>
+                    </div>
+
+                    <div class="nav-link-wrapper">
+                        <a href="currentodds.html">Scores & Odds</a>
+                    </div>
+
+
+                    <div class="nav-link-wrapper">
+                        <a href="historicals.html">Historical Outcomes</a>
+                    </div>
+                    
+                    <div class="nav-link-wrapper">
+                        <a href="https://espn.com">ESPN</a>
+                    </div>
+
+                    <div class="nav-link-wrapper">
+                        <a href="details.html">Details</a>
+                    </div>
+                </div>
+
+                <div class="right-side">
+                    <div class="brand">
+                        <div>Connor Steiner</div>
+                    </div>
+                </div>   
+            </div>
+
+            <div class="row row-cols-4 g-3">
+
+                <% teams = Team.all
+                   teams = teams.sort_by {|team| team.pointp_leag_rank} %>
+
+                    <% for team in teams %>
+                        <%
+                            abbreviation = team["abbreviation"]
+                            location = team["location"]
+                            nickname = team["nickname"]
+                            points = team["points"]
+                            wins = team["wins"]
+                            losses = team["losses"]
+                            otl = team["ot_losses"]
+                            rank = team["pointp_leag_rank"]
+                            link = team["url"]
+                        %>
+
+                <div class="col">
+                    <div class="card">
+                        <div class="portfolio-item-wrapper">
+                            <div class="portfolio-img-background" style="background-image:url(images/skylines/<%=abbreviation%>.jpeg)" class="card-img-top"></div>
+                        
+                            <div class="img-text-wrapper">
+                                <div class="logo-wrapper">
+                                    <img src="images/logos/<%=abbreviation%>-logo.png" class="card-img-top">
+                                </div>
+                                <div class="subtitle">
+                                    <h5><%=location%><br><%=nickname%></h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="card-header">
+                                <ul class="nav nav-tabs card-header-tabs">
+                                    <li class="nav-item">
+                                    <a class="nav-link active" aria-current="true" href="#">Team</a>
+                                    </li>
+                                    <li class="nav-item">
+                                    <a class="nav-link" href="#">Stats</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">Schedule</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">Record: <%=wins%>-<%=losses%>-<%=otl%></li>
+                                <li class="list-group-item">Points: <%=points%></li>
+                                <li class="list-group-item">Place: <%=rank%></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <% end %>
+
+            </div>
+        </div>
+    </body>
+    <script>
+        const portfolioItems = document.querySelectorAll('.portfolio-item-wrapper')
+
+        portfolioItems.forEach(portfolioItem => {
+            portfolioItem.addEventListener('mouseover', () => {
+                portfolioItem.childNodes[1].classList.add('img-darken');
+            })
+
+            portfolioItem.addEventListener('mouseout', () => {
+                portfolioItem.childNodes[1].classList.remove('img-darken');
+            })
+        })
+    </script>
+</html>

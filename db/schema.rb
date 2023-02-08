@@ -10,40 +10,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_04_225938) do
-
-  create_table "activities", force: :cascade do |t|
-    t.integer "salesperson_id"
-    t.integer "contact_id"
-    t.string "note"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "companies", force: :cascade do |t|
+ActiveRecord::Schema[7.0].define(version: 2023_02_08_012557) do
+  create_table "teams", force: :cascade do |t|
+    t.string "db_id"
     t.string "name"
+    t.string "abbreviation"
     t.string "city"
-    t.string "state"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "contacts", force: :cascade do |t|
-    t.string "first_name"
-    t.string "last_name"
-    t.string "email"
-    t.string "phone_number"
-    t.integer "company_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "salespeople", force: :cascade do |t|
-    t.string "first_name"
-    t.string "last_name"
-    t.string "email"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.integer "est."
+    t.string "conference"
+    t.string "division"
+    t.string "location"
+    t.string "nickname"
+    t.string "arena"
+    t.string "url"
+    t.integer "points"
+    t.integer "wins"
+    t.integer "losses"
+    t.integer "ot_losses"
+    t.integer "reg_wins"
+    t.integer "goals_against"
+    t.integer "goals_for"
+    t.integer "row"
+    t.integer "games_played"
+    t.integer "point_perc"
+    t.integer "pointp_div_rank"
+    t.integer "pointp_conf_rank"
+    t.integer "pointp_leag_rank"
+    t.string "last_refreshed"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

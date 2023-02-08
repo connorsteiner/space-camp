@@ -1,0 +1,15 @@
+<h1>NHL</h1>
+
+<%
+    teams = Team.all
+%>
+
+<% for team in teams %>
+    <% abbreviation = team["abbreviation"] %>
+    <img src="images/logos/<%=abbreviation%>-logo.png">
+<% end %>
+
+<% for team in teams %>
+    <% abbreviation = team["abbreviation"] %>
+    <img src="images/skylines/<%=abbreviation%>.jpeg">
+<% end %>
